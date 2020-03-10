@@ -8,7 +8,10 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
-import Expenses from '../Expenses/Expenses'
+import Categories from '../Categories/Categories'
+import TransactionCreate from '../TransactionCreate/TransactionCreate'
+import Footer from '../Footer/Footer'
+import Category from '../Category/Category'
 
 class App extends Component {
   constructor () {
@@ -49,14 +52,21 @@ class App extends Component {
           <Route path='/sign-in' render={() => (
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
-          <AuthenticatedRoute user={user} path='/sign-out' render={() => (
+          <AuthenticatedRoute exact user={user} path='/sign-out' render={() => (
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/change-password' render={() => (
+          <AuthenticatedRoute exact user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/expenses' render={() => (
-            <Expenses />
+          <AuthenticatedRoute exact user={user} path='/footer' component={ Footer } />
+          <AuthenticatedRoute exact user={user} path='/categories' render={() => (
+            <Categories user={user} />
+          )} />
+          <AuthenticatedRoute exact user={user} path='/categories/:id' render={({ match }) => (
+            <Category user={user} match={ match } />
+          )} />
+          <AuthenticatedRoute exact user={user} path='/create-transaction' render={() => (
+            <TransactionCreate user={user} />
           )} />
         </main>
       </Fragment>

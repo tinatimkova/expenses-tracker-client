@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import Footer from '../Footer/Footer'
 
-class Expenses extends Component {
-  constructor () {
-    super()
+class Categories extends Component {
+  constructor (props) {
+    super(props)
 
     this.state = {
       categories: null
@@ -38,11 +39,14 @@ class Expenses extends Component {
     }
 
     return (
-      <ol>
-        <h4>{categoriesHtml}</h4>
-      </ol>
+      <Fragment>
+        <ol>
+          <h4>{categoriesHtml}</h4>
+        </ol>
+        <Footer />
+      </Fragment>
     )
   }
 }
 
-export default Expenses
+export default Categories
