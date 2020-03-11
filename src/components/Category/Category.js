@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 // import { Link } from 'react-router-dom'
+import Transaction from '../Transaction/Transaction'
 
 import axios from 'axios'
 
@@ -10,8 +11,7 @@ class Category extends Component {
     super()
 
     this.state = {
-      category: null,
-      deleted: false
+      category: null
     }
   }
 
@@ -29,19 +29,6 @@ class Category extends Component {
       .catch(console.error)
   }
 
-  destroy = () => {
-    console.log(this.props)
-    axios({
-      url: `${apiUrl}/transactions/${this.props.match.params.id}`,
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Token token=${this.props.user.token}`
-      }
-    })
-      .then(() => this.setState({ deleted: true }))
-      .catch(console.error)
-  }
-
   render () {
     const { category } = this.state
     let categoryHtml
@@ -51,10 +38,12 @@ class Category extends Component {
         // Handle we deleted the movies
         categoryHtml = category.map(transaction => (
           <li key={transaction.id}>
-            <p>{transaction.note}</p>
-            <p>{transaction.amount}</p>
-            <p>{transaction.date}</p>
-            <button onClick={this.destroy}>Delete</button>
+            <Transaction
+              id={transaction.id}
+              note={transaction.note}
+              amount={transaction.amount}
+              date={transaction.date}
+              user={this.props.user}/>
           </li>
         ))
       }
@@ -65,7 +54,6 @@ class Category extends Component {
 
     return (
       <div>
-        <h4></h4>
         <ul>
           {categoryHtml}
         </ul>
