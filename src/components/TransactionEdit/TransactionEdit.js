@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
@@ -79,6 +79,7 @@ class TransactionEdit extends Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />
+          <Link to='/categories/'>Back to categories</Link>
         </div>
       )
     }

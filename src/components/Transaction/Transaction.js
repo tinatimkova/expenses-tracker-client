@@ -21,9 +21,8 @@ const Transaction = props => {
 
   if (deleted) {
     return <Redirect to={
-      { pathname: '/categories', state: { msg: 'Transaction succesfully deleted!' } }
-    } />
-  }
+      { pathname: '/categories', state: { msg: 'Transaction succesfully deleted!'} }
+  } />
 
   return (
     <Fragment>

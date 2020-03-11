@@ -65,10 +65,10 @@ class App extends Component {
             <Category user={user} match={ match } />
           )} />
           <AuthenticatedRoute exact user={user} path='/create-transaction' render={() => (
-            <TransactionCreate user={user} />
+            <TransactionCreate user={user} msgAlert={this.msgAlert}/>
           )} />
           <AuthenticatedRoute exact user={user} path='/transactions/:id/edit' render={({ match }) => (
-            <TransactionEdit user={user} match={ match } />
+            <TransactionEdit user={user} match={ match } msgAlert={this.msgAlert}/>
           )} />
         </main>
       </Fragment>

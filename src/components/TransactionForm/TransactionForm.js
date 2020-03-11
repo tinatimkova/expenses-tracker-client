@@ -1,4 +1,5 @@
 import React from 'react'
+// import { Link } from 'react-router-dom'
 
 const TransactionForm = ({ transaction, handleChange, handleSubmit }) => (
 
@@ -54,8 +55,8 @@ const TransactionForm = ({ transaction, handleChange, handleSubmit }) => (
     </div>
 
     <button type='submit'>Submit</button>
-
   </form>
+
 )
 
 export default TransactionForm

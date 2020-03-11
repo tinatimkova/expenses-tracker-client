@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-// import TransactionCreate from '../TransactionCreate/TransactionCreate'
 
 class Categories extends Component {
   constructor (props) {
@@ -34,24 +33,22 @@ class Categories extends Component {
     if (categories) {
       if (categories.length) {
         categoriesHtml = categories.map(category => (
-          <li key={category.id}>
-            <Link to={`/categories/${category.id}`}>{category.name}</Link>
-          </li>
+          <Fragment key={category.id}>
+            <li>
+              <Link to={`/categories/${category.id}`}>{category.name}</Link>
+            </li>
+          </Fragment>
         ))
       }
     } else {
       categoriesHtml = 'Loading...'
     }
 
-    // <button onClick={this.props.onSubmit}>New Transaction</button>
     return (
       <Fragment>
         <ol>
           <h4>{categoriesHtml}</h4>
         </ol>
-        <Link to={'/create-transaction'}>
-          <button>New Transaction</button>
-        </Link>
       </Fragment>
     )
   }

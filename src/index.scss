@@ -1,1 +1,19 @@
 @import '~bootstrap/scss/bootstrap';
+$font-color: #071630;
+$background-color: #ffcba4;
+
+body {
+  background: $background-color;
+}
+
+.navbar {
+  background-color: #ffa4ab !important;
+}
+
+a {
+  color: $font-color;
+
+  :hover {
+    text-decoration: none;
+  }
+}
