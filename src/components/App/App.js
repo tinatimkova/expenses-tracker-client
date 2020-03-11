@@ -11,6 +11,7 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 import Categories from '../Categories/Categories'
 import TransactionCreate from '../TransactionCreate/TransactionCreate'
 import Category from '../Category/Category'
+import TransactionEdit from '../TransactionEdit/TransactionEdit'
 
 class App extends Component {
   constructor () {
@@ -65,6 +66,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute exact user={user} path='/create-transaction' render={() => (
             <TransactionCreate user={user} />
+          )} />
+          <AuthenticatedRoute exact user={user} path='/transactions/:id/edit' render={({ match }) => (
+            <TransactionEdit user={user} match={ match } />
           )} />
         </main>
       </Fragment>
