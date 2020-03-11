@@ -10,7 +10,8 @@ class Category extends Component {
     super()
 
     this.state = {
-      category: null
+      category: null,
+      deleted: false
     }
   }
 
@@ -28,6 +29,19 @@ class Category extends Component {
       .catch(console.error)
   }
 
+  destroy = () => {
+    console.log(this.props)
+    axios({
+      url: `${apiUrl}/transactions/${this.props.match.params.id}`,
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      }
+    })
+      .then(() => this.setState({ deleted: true }))
+      .catch(console.error)
+  }
+
   render () {
     const { category } = this.state
     let categoryHtml
@@ -40,6 +54,7 @@ class Category extends Component {
             <p>{transaction.note}</p>
             <p>{transaction.amount}</p>
             <p>{transaction.date}</p>
+            <button onClick={this.destroy}>Delete</button>
           </li>
         ))
       }
@@ -50,7 +65,7 @@ class Category extends Component {
 
     return (
       <div>
-        <h4>Category:</h4>
+        <h4></h4>
         <ul>
           {categoryHtml}
         </ul>

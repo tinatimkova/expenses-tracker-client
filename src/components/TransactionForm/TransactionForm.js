@@ -21,7 +21,7 @@ const TransactionForm = ({ transaction, handleChange, handleSubmit }) => (
         name='amount'
         placeholder='Amount spent'
         value={ transaction.amount }
-        type='number'
+        type='decimal'
         min='0'
         onChange={handleChange}
       />
@@ -39,17 +39,17 @@ const TransactionForm = ({ transaction, handleChange, handleSubmit }) => (
 
     <div>
       <label>Category:</label>
-      <select name="category" size="10" multiple>
-        <option value="Housing" data-id='1'>Housing</option>
-        <option value="Food & Dining" data-id='2'>Food & Dining</option>
-        <option value="Shopping" data-id='3'>Shopping</option>
-        <option value="Travel & Entertainment" data-id='4'>Travel & Entertainment</option>
-        <option value="Transport & Auto" data-id='5'>Transport & Auto</option>
-        <option value="Education" data-id='6'>Education</option>
-        <option value="Utilities & Bills" data-id='7'>Utilities & Bills</option>
-        <option value="Gifts" data-id='8'>Gifts</option>
-        <option value="Healthcare" data-id='9'>Healthcare</option>
-        <option value="Kids" data-id='10'>Kids</option>
+      <select name="category_id" size="10" onChange={handleChange}>
+        <option value={ 1 }>Housing</option>
+        <option value={ 2 }>Food & Dining</option>
+        <option value={ 3 }>Shopping</option>
+        <option value={ 4 }>Travel & Entertainment</option>
+        <option value={ 5 }>Transport & Auto</option>
+        <option value={ 6 }>Education</option>
+        <option value={ 7 }>Utilities & Bills</option>
+        <option value={ 8 }>Gifts</option>
+        <option value={ 9 }>Healthcare</option>
+        <option value={ 10 }>Kids</option>
       </select>
     </div>
 

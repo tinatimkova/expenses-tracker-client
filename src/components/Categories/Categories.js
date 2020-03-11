@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-import Footer from '../Footer/Footer'
+// import TransactionCreate from '../TransactionCreate/TransactionCreate'
 
 class Categories extends Component {
   constructor (props) {
@@ -19,6 +19,11 @@ class Categories extends Component {
         this.setState({ categories: res.data.categories })
       })
       .catch(console.error)
+  }
+
+  onSubmit = event => {
+    event.preventDefault()
+    return <Redirect to='/create-transaction' />
   }
 
   render () {
@@ -38,12 +43,15 @@ class Categories extends Component {
       categoriesHtml = 'Loading...'
     }
 
+    // <button onClick={this.props.onSubmit}>New Transaction</button>
     return (
       <Fragment>
         <ol>
           <h4>{categoriesHtml}</h4>
         </ol>
-        <Footer />
+        <Link to={'/create-transaction'}>
+          <button>New Transaction</button>
+        </Link>
       </Fragment>
     )
   }

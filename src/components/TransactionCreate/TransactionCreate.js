@@ -13,17 +13,21 @@ class TransactionCreate extends Component {
         amount: '',
         note: '',
         date: '',
-        category: ''
+        category_id: ''
       },
       createdId: null
     }
   }
 
   handleSubmit = (event) => {
-    event.prevent.Default()
-
-    axios.post(`${apiUrl}/transactions`, {
-      transaction: this.state.transaction
+    event.preventDefault()
+    axios({
+      url: `${apiUrl}/transactions`,
+      method: 'POST',
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      },
+      data: { transaction: this.state.transaction }
     })
       .then(res => {
         this.setState({ createdId: res.data.transaction.id })

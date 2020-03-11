@@ -10,7 +10,6 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import Categories from '../Categories/Categories'
 import TransactionCreate from '../TransactionCreate/TransactionCreate'
-import Footer from '../Footer/Footer'
 import Category from '../Category/Category'
 
 class App extends Component {
@@ -58,7 +57,6 @@ class App extends Component {
           <AuthenticatedRoute exact user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute exact user={user} path='/footer' component={ Footer } />
           <AuthenticatedRoute exact user={user} path='/categories' render={() => (
             <Categories user={user} />
           )} />
