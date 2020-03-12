@@ -32,7 +32,18 @@ class TransactionCreate extends Component {
       .then(res => {
         this.setState({ createdId: res.data.transaction.id })
       })
-      .catch(console.error)
+      .then(() => this.props.msgAlert({
+        heading: 'Transaction successfully created!',
+        message: '',
+        variant: 'success'
+      }))
+      .catch(error => {
+        this.props.msgAlert({
+          heading: 'Create Transaction Failed with error: ' + error.message,
+          message: '',
+          variant: 'danger'
+        })
+      })
   }
 
   handleChange = (event) => {

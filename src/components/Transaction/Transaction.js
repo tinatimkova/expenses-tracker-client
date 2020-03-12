@@ -3,7 +3,6 @@ import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
-import messages from '../AutoDismissAlert/messages'
 
 const Transaction = props => {
   const [deleted, setDeleted] = useState(false)
@@ -18,11 +17,17 @@ const Transaction = props => {
     })
       .then(() => setDeleted(true))
       .then(() => props.msgAlert({
-        heading: 'Delete Transacton Success',
-        message: messages.deleteTransactionSuccess,
+        heading: 'Transaction was deleted!',
+        message: '',
         variant: 'success'
       }))
-      .catch(console.error)
+      .catch(error => {
+        props.msgAlert({
+          heading: 'Delete Transaction Failed with error: ' + error.message,
+          message: '',
+          variant: 'danger'
+        })
+      })
   }
 
   if (deleted) {

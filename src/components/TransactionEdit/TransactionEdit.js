@@ -49,7 +49,18 @@ class TransactionEdit extends Component {
       .then(() => {
         this.setState({ updated: true })
       })
-      .catch(console.error)
+      .then(() => this.props.msgAlert({
+        heading: 'Transaction successfully updated!',
+        message: '',
+        variant: 'success'
+      }))
+      .catch(error => {
+        this.props.msgAlert({
+          heading: 'Update Transaction Failed with error: ' + error.message,
+          message: '',
+          variant: 'danger'
+        })
+      })
   }
 
     handleChange = (event) => {
