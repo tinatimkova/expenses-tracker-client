@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
+import messages from '../AutoDismissAlert/messages'
 
 const Transaction = props => {
   const [deleted, setDeleted] = useState(false)
@@ -16,6 +17,11 @@ const Transaction = props => {
       }
     })
       .then(() => setDeleted(true))
+      .then(() => props.msgAlert({
+        heading: 'Delete Transacton Success',
+        message: messages.deleteTransactionSuccess,
+        variant: 'success'
+      }))
       .catch(console.error)
   }
 
@@ -33,9 +39,6 @@ const Transaction = props => {
       <Link to={`/transactions/${props.id}/edit`}>
         <button className="btn btn-outline-info btn-sm">Edit</button>
       </Link>
-      <div>
-        <Link to="/categories">Back to categories</Link>
-      </div>
     </Fragment>
   )
 }

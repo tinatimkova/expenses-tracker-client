@@ -44,7 +44,8 @@ class Category extends Component {
               note={transaction.note}
               amount={transaction.amount}
               date={transaction.date}
-              user={this.props.user}/>
+              user={this.props.user}
+              msgAlert={this.props.msgAlert} />
           </li>
         ))
       }
@@ -62,6 +63,9 @@ class Category extends Component {
         <Link to={'/create-transaction'}>
           <button className="btn btn-outline-secondary" >New Transaction</button>
         </Link>
+        <div>
+          <Link to="/categories">&#8678; Go Back</Link>
+        </div>
       </div>
     )
   }

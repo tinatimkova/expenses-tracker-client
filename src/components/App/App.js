@@ -62,7 +62,7 @@ class App extends Component {
             <Categories user={user} />
           )} />
           <AuthenticatedRoute exact user={user} path='/categories/:id' render={({ match }) => (
-            <Category user={user} match={ match } />
+            <Category user={user} match={ match } msgAlert={this.msgAlert} />
           )} />
           <AuthenticatedRoute exact user={user} path='/create-transaction' render={() => (
             <TransactionCreate user={user} msgAlert={this.msgAlert}/>

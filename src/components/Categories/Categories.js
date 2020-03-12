@@ -46,9 +46,9 @@ class Categories extends Component {
 
     return (
       <Fragment>
-        <ol>
+        <ul>
           <h4>{categoriesHtml}</h4>
-        </ol>
+        </ul>
       </Fragment>
     )
   }
