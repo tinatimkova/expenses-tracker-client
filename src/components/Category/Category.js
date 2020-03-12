@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import Transaction from '../Transaction/Transaction'
+import CategoryTotal from '../CategoryTotal/CategoryTotal'
 
 import axios from 'axios'
 
@@ -32,22 +33,25 @@ class Category extends Component {
   render () {
     const { category } = this.state
     let categoryHtml
-    console.log(this.props.match)
+    let total
 
     if (category) {
       if (category.length) {
         // Handle we deleted the movies
         categoryHtml = category.map(transaction => (
-          <li key={transaction.id}>
-            <Transaction
-              id={transaction.id}
-              note={transaction.note}
-              amount={transaction.amount}
-              date={transaction.date}
-              user={this.props.user}
-              msgAlert={this.props.msgAlert} />
-          </li>
+          <Fragment key={transaction.id}>
+            <li >
+              <Transaction
+                id={transaction.id}
+                note={transaction.note}
+                amount={transaction.amount}
+                date={transaction.date}
+                user={this.props.user}
+                msgAlert={this.props.msgAlert} />
+            </li>
+          </Fragment>
         ))
+        total = <CategoryTotal category={this.state.category} />
       }
     } else {
       // No movie yet...
@@ -55,18 +59,19 @@ class Category extends Component {
     }
 
     return (
-      <div>
-        <ul>
-          <h4></h4>
-          {categoryHtml}
-        </ul>
-        <Link to={'/create-transaction'}>
-          <button className="btn btn-outline-secondary" >New Transaction</button>
-        </Link>
+      <ul>
+        <h4></h4>
+        {categoryHtml}
+        {total}
+        <div>
+          <Link to={'/create-transaction'}>
+            <button className="btn btn-outline-secondary" >New Transaction</button>
+          </Link>
+        </div>
         <div>
           <Link to="/categories">&#8678; Go Back</Link>
         </div>
-      </div>
+      </ul>
     )
   }
 }
