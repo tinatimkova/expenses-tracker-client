@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import Transaction from '../Transaction/Transaction'
 import CategoryTotal from '../CategoryTotal/CategoryTotal'
+import Transaction from '../Transaction/Transaction'
 
 import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
 
-class Category extends Component {
+class LastMonthTransactions extends Component {
   constructor () {
     super()
 
@@ -18,7 +18,7 @@ class Category extends Component {
 
   componentDidMount () {
     axios({
-      url: `${apiUrl}/categories/${this.props.match.params.id}/transactions`,
+      url: `${apiUrl}/categories/${this.props.match.params.id}/transactions/last_month`,
       method: 'GET',
       headers: {
         'Authorization': `Token token=${this.props.user.token}`
@@ -38,10 +38,9 @@ class Category extends Component {
     if (category) {
       if (category.length) {
         // Handle we deleted the movies
-
         categoryHtml = category.map(transaction => (
           <Fragment key={transaction.id}>
-            <li>
+            <li >
               <Transaction
                 id={transaction.id}
                 note={transaction.note}
@@ -60,19 +59,16 @@ class Category extends Component {
     }
 
     return (
-      <Fragment>
-        <ul>
-          <h4></h4>
-          {categoryHtml}
-          {total}
-          <Link to={`/categories/${this.props.match.params.id}/transactions/last_month`}>
-            <button className="btn btn-outline-info btn-sm">Last Month</button>
-          </Link>
+      <ul>
+        <h4>Last month:</h4>
+        {categoryHtml}
+        {total}
+        <div>
           <Link to="/categories">&#8678; Go Back</Link>
-        </ul>
-      </Fragment>
+        </div>
+      </ul>
     )
   }
 }
 
-export default Category
+export default LastMonthTransactions

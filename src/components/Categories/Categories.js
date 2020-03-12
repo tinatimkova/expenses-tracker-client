@@ -48,6 +48,9 @@ class Categories extends Component {
       <Fragment>
         <ul>
           <h4>{categoriesHtml}</h4>
+          <Link to={'/create-transaction'}>
+            <button className="btn btn-outline-secondary" >New Transaction</button>
+          </Link>
         </ul>
       </Fragment>
     )

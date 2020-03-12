@@ -12,6 +12,7 @@ import Categories from '../Categories/Categories'
 import TransactionCreate from '../TransactionCreate/TransactionCreate'
 import Category from '../Category/Category'
 import TransactionEdit from '../TransactionEdit/TransactionEdit'
+import LastMonthTransactions from '../LastMonthTransactions/LastMonthTransactions'
 
 class App extends Component {
   constructor () {
@@ -63,6 +64,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute exact user={user} path='/categories/:id' render={({ match }) => (
             <Category user={user} match={ match } msgAlert={this.msgAlert} />
+          )} />
+          <AuthenticatedRoute exact user={user} path='/categories/:id/transactions/last_month' render={({ match }) => (
+            <LastMonthTransactions user={user} match={ match } msgAlert={this.msgAlert}/>
           )} />
           <AuthenticatedRoute exact user={user} path='/create-transaction' render={() => (
             <TransactionCreate user={user} msgAlert={this.msgAlert}/>
