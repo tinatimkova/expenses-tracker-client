@@ -21,19 +21,21 @@ const Transaction = props => {
 
   if (deleted) {
     return <Redirect to={
-      { pathname: '/categories', state: { msg: 'Transaction succesfully deleted!'} }
-  } />
-
+      { pathname: '/categories' }
+    } />
+  }
   return (
     <Fragment>
       <h4>{props.note}</h4>
       <p>Amount: {props.amount}</p>
       <p>Date: {props.date}</p>
-      <button onClick={destroy}>Delete</button>
+      <button className='btn btn-outline-danger btn-sm' onClick={destroy}>Delete</button>
       <Link to={`/transactions/${props.id}/edit`}>
-        <button>Edit</button>
+        <button className="btn btn-outline-info btn-sm">Edit</button>
       </Link>
-      <Link to="/categories">Back to categories</Link>
+      <div>
+        <Link to="/categories">Back to categories</Link>
+      </div>
     </Fragment>
   )
 }

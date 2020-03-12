@@ -60,7 +60,7 @@ class Category extends Component {
           {categoryHtml}
         </ul>
         <Link to={'/create-transaction'}>
-          <button>New Transaction</button>
+          <button className="btn btn-outline-secondary" >New Transaction</button>
         </Link>
       </div>
     )
