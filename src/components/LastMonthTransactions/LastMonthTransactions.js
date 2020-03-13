@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import CategoryTotal from '../CategoryTotal/CategoryTotal'
 import Transaction from '../Transaction/Transaction'
+import { ListGroup } from 'react-bootstrap'
 
 import axios from 'axios'
 
@@ -39,17 +40,15 @@ class LastMonthTransactions extends Component {
       if (category.length) {
         // Handle we deleted the movies
         categoryHtml = category.map(transaction => (
-          <Fragment key={transaction.id}>
-            <li >
-              <Transaction
-                id={transaction.id}
-                note={transaction.note}
-                amount={transaction.amount}
-                date={transaction.date}
-                user={this.props.user}
-                msgAlert={this.props.msgAlert} />
-            </li>
-          </Fragment>
+          <ListGroup.Item key={transaction.id}>
+            <Transaction
+              id={transaction.id}
+              note={transaction.note}
+              amount={transaction.amount}
+              date={transaction.date}
+              user={this.props.user}
+              msgAlert={this.props.msgAlert} />
+          </ListGroup.Item>
         ))
         total = <CategoryTotal category={this.state.category} />
       }
@@ -59,14 +58,14 @@ class LastMonthTransactions extends Component {
     }
 
     return (
-      <ul>
+      <ListGroup>
         <h4>Last month:</h4>
         {categoryHtml}
-        {total}
-        <div>
+        <ListGroup.Item variant="warning">{total}</ListGroup.Item>
+        <div className='go-back-button'>
           <Link to="/categories">&#8678; Go Back</Link>
         </div>
-      </ul>
+      </ListGroup>
     )
   }
 }

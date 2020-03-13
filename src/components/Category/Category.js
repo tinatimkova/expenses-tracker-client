@@ -62,11 +62,15 @@ class Category extends Component {
       <ListGroup>
         <h4></h4>
         {categoryHtml}
-        {total}
-        <Link to={`/categories/${this.props.match.params.id}/transactions/last_month`}>
-          <button className="btn btn-outline-info btn-sm">Last Month</button>
-        </Link>
-        <Link to="/categories">&#8678; Go Back</Link>
+        <ListGroup.Item variant="warning">{total}</ListGroup.Item>
+        <div className='last-month-button'>
+          <Link to={`/categories/${this.props.match.params.id}/transactions/last_month`}>
+            <button className="btn btn-outline-info btn-sm">Last Month</button>
+          </Link>
+        </div>
+        <div className='go-back-button'>
+          <Link to="/categories">&#8678; Go Back</Link>
+        </div>
       </ListGroup>
     )
   }

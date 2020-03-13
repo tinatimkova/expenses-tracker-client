@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const TransactionForm = ({ transaction, handleChange, handleSubmit }) => (
 
@@ -54,7 +55,12 @@ const TransactionForm = ({ transaction, handleChange, handleSubmit }) => (
       </Form.Control>
     </Form.Group>
 
-    <button type='submit'>Submit</button>
+    <div className='form-submit-button'>
+      <button type='submit'>Submit</button>
+    </div>
+    <div className='go-back-button'>
+      <Link to="/categories">&#8678; Go Back</Link>
+    </div>
   </Form>
 
 )
