@@ -51,15 +51,24 @@ class LastMonthTransactions extends Component {
           </ListGroup.Item>
         ))
         total = <CategoryTotal category={this.state.category} />
+      } else {
+        return (
+          <ListGroup.Item variant="warning">
+            <h4>{'There\'re no transactions in this month yet!'}</h4>
+            <div className='go-back-button'>
+              <Link to="/categories">&#8678; Go Back</Link>
+            </div>
+          </ListGroup.Item>
+        )
       }
     } else {
-      // No movie yet...
+      // No category yet...
       categoryHtml = 'Loading...'
     }
 
     return (
       <ListGroup>
-        <h4>Last month:</h4>
+        <h4>Last month transactions</h4>
         {categoryHtml}
         <ListGroup.Item variant="warning">{total}</ListGroup.Item>
         <div className='go-back-button'>

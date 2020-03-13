@@ -38,8 +38,29 @@ a {
   margin-top: 20px;
 }
 
+.submit-form {
+  display: inline-block;
+  position: relative;
+  left: 50%; // Move the element to the left by 50% of the container's width
+  transform: translateX(-50%);
+}
+
+.home-page-img {
+  display: inline-block;
+  position: relative;
+  left: 50%; // Move the element to the left by 50% of the container's width
+  transform: translateX(-50%);
+}
+
 h4 {
   text-align: center;
+}
+
+h1 {
+  font-family: 'Kalam', cursive;
+  margin: 50px;
+  text-align: center;
+  color: $font-color;
 }
 
 ul {

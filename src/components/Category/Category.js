@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import Transaction from '../Transaction/Transaction'
 import CategoryTotal from '../CategoryTotal/CategoryTotal'
@@ -52,9 +52,18 @@ class Category extends Component {
           </ListGroup.Item>
         ))
         total = <CategoryTotal category={this.state.category} />
+      } else {
+        return (
+          <ListGroup.Item variant="warning">
+            <h4>{'There\'re no transactions in this category yet!'}</h4>
+            <div className='go-back-button'>
+              <Link to="/categories">&#8678; Go Back</Link>
+            </div>
+          </ListGroup.Item>
+        )
       }
     } else {
-      // No movie yet...
+      // No category yet
       categoryHtml = 'Loading...'
     }
 
@@ -62,12 +71,14 @@ class Category extends Component {
       <ListGroup>
         <h4></h4>
         {categoryHtml}
-        <ListGroup.Item variant="warning">{total}</ListGroup.Item>
-        <div className='last-month-button'>
-          <Link to={`/categories/${this.props.match.params.id}/transactions/last_month`}>
-            <button className="btn btn-outline-info btn-sm">Last Month</button>
-          </Link>
-        </div>
+        <Fragment>
+          <ListGroup.Item variant="warning">{total}</ListGroup.Item>
+          <div className='last-month-button'>
+            <Link to={`/categories/${this.props.match.params.id}/transactions/last_month`}>
+              <button className="btn btn-outline-info btn-sm">Last Month</button>
+            </Link>
+          </div>
+        </Fragment>
         <div className='go-back-button'>
           <Link to="/categories">&#8678; Go Back</Link>
         </div>

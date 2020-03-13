@@ -13,6 +13,7 @@ import TransactionCreate from '../TransactionCreate/TransactionCreate'
 import Category from '../Category/Category'
 import TransactionEdit from '../TransactionEdit/TransactionEdit'
 import LastMonthTransactions from '../LastMonthTransactions/LastMonthTransactions'
+import Home from '../Home/Home'
 
 class App extends Component {
   constructor () {
@@ -53,6 +54,7 @@ class App extends Component {
           <Route path='/sign-in' render={() => (
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
+          <Route exact path='/' component={Home}/>
           <AuthenticatedRoute exact user={user} path='/sign-out' render={() => (
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
           )} />
