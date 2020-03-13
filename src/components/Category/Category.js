@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Transaction from '../Transaction/Transaction'
 import CategoryTotal from '../CategoryTotal/CategoryTotal'
+import { ListGroup } from 'react-bootstrap'
 
 import axios from 'axios'
 
@@ -40,17 +41,15 @@ class Category extends Component {
         // Handle we deleted the movies
 
         categoryHtml = category.map(transaction => (
-          <Fragment key={transaction.id}>
-            <li>
-              <Transaction
-                id={transaction.id}
-                note={transaction.note}
-                amount={transaction.amount}
-                date={transaction.date}
-                user={this.props.user}
-                msgAlert={this.props.msgAlert} />
-            </li>
-          </Fragment>
+          <ListGroup.Item key={transaction.id}>
+            <Transaction
+              id={transaction.id}
+              note={transaction.note}
+              amount={transaction.amount}
+              date={transaction.date}
+              user={this.props.user}
+              msgAlert={this.props.msgAlert} />
+          </ListGroup.Item>
         ))
         total = <CategoryTotal category={this.state.category} />
       }
@@ -60,17 +59,15 @@ class Category extends Component {
     }
 
     return (
-      <Fragment>
-        <ul>
-          <h4></h4>
-          {categoryHtml}
-          {total}
-          <Link to={`/categories/${this.props.match.params.id}/transactions/last_month`}>
-            <button className="btn btn-outline-info btn-sm">Last Month</button>
-          </Link>
-          <Link to="/categories">&#8678; Go Back</Link>
-        </ul>
-      </Fragment>
+      <ListGroup>
+        <h4></h4>
+        {categoryHtml}
+        {total}
+        <Link to={`/categories/${this.props.match.params.id}/transactions/last_month`}>
+          <button className="btn btn-outline-info btn-sm">Last Month</button>
+        </Link>
+        <Link to="/categories">&#8678; Go Back</Link>
+      </ListGroup>
     )
   }
 }

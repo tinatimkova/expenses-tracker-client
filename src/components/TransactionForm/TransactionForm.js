@@ -1,46 +1,46 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+import { Form } from 'react-bootstrap'
 
 const TransactionForm = ({ transaction, handleChange, handleSubmit }) => (
 
-  <form onSubmit={handleSubmit}>
+  <Form onSubmit={handleSubmit}>
     <h4>New Transaction</h4>
-    <div>
-      <label>Date:</label>
-      <input
+    <Form.Group>
+      <Form.Label>Date:</Form.Label>
+      <Form.Control
         name='date'
         placeholder='Date'
         value={ transaction.date }
         type='date'
         onChange={handleChange}
       />
-    </div>
+    </Form.Group>
 
-    <div>
-      <label>Amount:</label>
-      <input
+    <Form.Group>
+      <Form.Label>Amount $:</Form.Label>
+      <Form.Control
         name='amount'
-        placeholder='Amount spent'
+        placeholder='How much money was spent'
         value={ transaction.amount }
         type='decimal'
         min='0'
         onChange={handleChange}
       />
-    </div>
+    </Form.Group>
 
-    <div>
-      <label>Note:</label>
-      <input
+    <Form.Group>
+      <Form.Label>Note:</Form.Label>
+      <Form.Control
         name='note'
         placeholder='Description'
         value={ transaction.note }
         onChange={handleChange}
       />
-    </div>
+    </Form.Group>
 
-    <div>
-      <label>Category:</label>
-      <select name="category_id" size="10" onChange={handleChange}>
+    <Form.Group>
+      <Form.Label>Category:</Form.Label>
+      <Form.Control as="select" name="category_id" size="10" onChange={handleChange}>
         <option value={ 1 }>Housing</option>
         <option value={ 2 }>Food & Dining</option>
         <option value={ 3 }>Shopping</option>
@@ -51,11 +51,11 @@ const TransactionForm = ({ transaction, handleChange, handleSubmit }) => (
         <option value={ 8 }>Gifts</option>
         <option value={ 9 }>Healthcare</option>
         <option value={ 10 }>Kids</option>
-      </select>
-    </div>
+      </Form.Control>
+    </Form.Group>
 
     <button type='submit'>Submit</button>
-  </form>
+  </Form>
 
 )
 

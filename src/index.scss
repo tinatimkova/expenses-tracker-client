@@ -1,13 +1,25 @@
 @import '~bootstrap/scss/bootstrap';
 $font-color: #071630;
 $background-color: #ffcba4;
+$navbar-color: #ffa4ab;
 
 body {
   background: $background-color;
 }
 
 .navbar {
-  background-color: #ffa4ab !important;
+  background-color: $navbar-color !important;
+}
+
+.list-group-item {
+  background-color: $background-color;
+  text-align: center;
+}
+
+.new-transaction-button {
+  background-color: $navbar-color !important;
+  color: $font-color;
+  border-color: $font-color;
 }
 
 a {
@@ -16,6 +28,10 @@ a {
   :hover {
     text-decoration: none;
   }
+}
+
+h4 {
+  text-align: center;
 }
 
 ul {

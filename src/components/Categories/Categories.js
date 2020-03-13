@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import { ListGroup, Button } from 'react-bootstrap'
 
 class Categories extends Component {
   constructor (props) {
@@ -33,11 +34,9 @@ class Categories extends Component {
     if (categories) {
       if (categories.length) {
         categoriesHtml = categories.map(category => (
-          <Fragment key={category.id}>
-            <li>
-              <Link to={`/categories/${category.id}`}>{category.name}</Link>
-            </li>
-          </Fragment>
+          <ListGroup.Item key={category.id}>
+            <Link to={`/categories/${category.id}`}>{category.name}</Link>
+          </ListGroup.Item>
         ))
       }
     } else {
@@ -45,14 +44,14 @@ class Categories extends Component {
     }
 
     return (
-      <Fragment>
-        <ul>
-          <h4>{categoriesHtml}</h4>
-          <Link to={'/create-transaction'}>
-            <button className="btn btn-outline-secondary" >New Transaction</button>
-          </Link>
-        </ul>
-      </Fragment>
+      <ListGroup>
+        <h4>{categoriesHtml}</h4>
+        <Link to={'/create-transaction'}>
+          <div>
+            <Button className='new-transaction-button' block>New Transaction</Button>
+          </div>
+        </Link>
+      </ListGroup>
     )
   }
 }
