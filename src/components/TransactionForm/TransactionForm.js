@@ -41,7 +41,7 @@ const TransactionForm = ({ transaction, handleChange, handleSubmit }) => (
 
     <Form.Group>
       <Form.Label>Category:</Form.Label>
-      <Form.Control as="select" name="category_id" size="10" onChange={handleChange}>
+      <Form.Control as="select" name="category_id" placeholder='Choose category' onChange={handleChange}>
         <option value={ 1 }>Housing</option>
         <option value={ 2 }>Food & Dining</option>
         <option value={ 3 }>Shopping</option>
