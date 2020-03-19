@@ -21,7 +21,7 @@ const TransactionForm = ({ transaction, handleChange, handleSubmit }) => (
       <Form.Label>Amount $:</Form.Label>
       <Form.Control
         name='amount'
-        placeholder='How much money was spent'
+        placeholder='How much'
         value={ transaction.amount }
         type='decimal'
         min='0'
@@ -41,7 +41,8 @@ const TransactionForm = ({ transaction, handleChange, handleSubmit }) => (
 
     <Form.Group>
       <Form.Label>Category:</Form.Label>
-      <Form.Control as="select" name="category_id" size="10" onChange={handleChange}>
+      <Form.Control as="select" name="category_id" onChange={handleChange}>
+        <option value={undefined}>...</option>
         <option value={ 1 }>Housing</option>
         <option value={ 2 }>Food & Dining</option>
         <option value={ 3 }>Shopping</option>

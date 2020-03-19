@@ -22,7 +22,7 @@ class TransactionCreate extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     axios({
-      url: `${apiUrl}/transactions`,
+      url: `${apiUrl}/transactions/`,
       method: 'POST',
       headers: {
         'Authorization': `Token token=${this.props.user.token}`
