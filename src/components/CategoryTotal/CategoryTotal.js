@@ -3,7 +3,7 @@ import React from 'react'
 const CategoryTotal = props => {
   let total = 0
   props.category.map(function (transaction) {
-    total = total + parseFloat(transaction.amount)
+    total = total + Number(transaction.amount)
   })
 
   return (
