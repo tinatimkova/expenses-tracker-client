@@ -9,7 +9,8 @@ class Categories extends Component {
     super(props)
 
     this.state = {
-      categories: null
+      categories: null,
+      categoryTotal: null
     }
   }
 
@@ -17,6 +18,17 @@ class Categories extends Component {
     axios(`${apiUrl}/categories`)
       .then(res => {
         this.setState({ categories: res.data.categories })
+        const categoryTotal = []
+        res.data.categories.map(category => {
+          let total = 0
+          category.transactions.map(transaction => {
+            if (transaction.user_id === this.props.user.id) {
+              total += Number(transaction.amount)
+            }
+          })
+          categoryTotal.push(total)
+        })
+        this.setState({ categoryTotal: categoryTotal })
       })
       .catch(console.error)
   }
@@ -27,20 +39,20 @@ class Categories extends Component {
   }
 
   render () {
-    const { categories } = this.state
+    const { categories, categoryTotal } = this.state
 
     let categoriesHtml
 
-    if (categories) {
-      if (categories.length) {
-        categoriesHtml = categories.map(category => (
-          <ListGroup.Item key={category.id}>
-            <Link to={`/categories/${category.id}`}>{category.name}</Link>
+    if (categories && categoryTotal) {
+      if (categories.length && categoryTotal.length) {
+        categoriesHtml = categories.map((category, index) => (
+          <ListGroup.Item className='categories' key={category.id}>
+            <Link to={`/categories/${category.id}`}>{category.name}<span>{categoryTotal[index]}</span></Link>
           </ListGroup.Item>
         ))
+      } else {
+        categoriesHtml = 'Loading...'
       }
-    } else {
-      categoriesHtml = 'Loading...'
     }
 
     return (

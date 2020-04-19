@@ -63,6 +63,11 @@ h1 {
   color: $font-color;
 }
 
-ul {
-  list-style-type: none;
+span {
+  float: right;
+  text-decoration: none;
+}
+
+.categories {
+  text-align: left;
 }
