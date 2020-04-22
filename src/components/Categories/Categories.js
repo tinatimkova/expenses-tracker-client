@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import { ListGroup, Button } from 'react-bootstrap'
+import { icons } from '../../icons/Icons'
 
 class Categories extends Component {
   constructor (props) {
@@ -40,14 +41,13 @@ class Categories extends Component {
 
   render () {
     const { categories, categoryTotal } = this.state
-
     let categoriesHtml
 
     if (categories && categoryTotal) {
       if (categories.length && categoryTotal.length) {
         categoriesHtml = categories.map((category, index) => (
           <ListGroup.Item className='categories' key={category.id}>
-            <Link to={`/categories/${category.id}`}>{category.name}<span>{categoryTotal[index]}</span></Link>
+            <Link to={`/categories/${category.id}`}><img className='icons' src={icons[index].icon} />{category.name}<span>{categoryTotal[index]}</span></Link>
           </ListGroup.Item>
         ))
       } else {
