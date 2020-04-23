@@ -14,6 +14,7 @@ import Category from '../Category/Category'
 import TransactionEdit from '../TransactionEdit/TransactionEdit'
 import LastMonthTransactions from '../LastMonthTransactions/LastMonthTransactions'
 import Home from '../Home/Home'
+import CategoryChart from '../Chart/Chart'
 
 class App extends Component {
   constructor () {
@@ -75,6 +76,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute exact user={user} path='/transactions/:id/edit' render={({ match }) => (
             <TransactionEdit user={user} match={ match } msgAlert={this.msgAlert}/>
+          )} />
+          <AuthenticatedRoute exact user={user} path='/chart' render={() => (
+            <CategoryChart />
           )} />
         </main>
       </Fragment>

@@ -1,44 +1,72 @@
 import React, { Component } from 'react'
-import CanvasJSReact from './canvasjs.react'
+import { Chart } from 'react-google-charts'
 
-// const CanvasJS = CanvasJSReact.CanvasJS
-const CanvasJSChart = CanvasJSReact.CanvasJSChart
-
-class Chart extends Component {
-  render () {
-    const options = {
-      theme: 'dark2',
-      animationEnabled: true,
-      exportFileName: 'Expenses by categories',
-      exportEnabled: true,
-      title: {
-        text: 'All Expenses By Categories'
-      },
-      data: [{
-        type: 'pie',
-        showInLegend: true,
-        legendText: '{label}',
-        toolTipContent: '{label}: <strong>{y}%</strong>',
-        indexLabel: '{y}%',
-        indexLabelPlacement: 'inside',
-        dataPoints: [
-          { y: 32, label: 'Housing' },
-          { y: 22, label: 'Shopping' },
-          { y: 15, label: 'Education' },
-          { y: 19, label: '' },
-          { y: 5, label: '' },
-          { y: 7, label: '' }
-        ]
-      }]
+const pieOptions = {
+  title: 'Percentage of each category in total expenses',
+  pieHole: 0.6,
+  slices: [
+    {
+      color: '#2BB673'
+    },
+    {
+      color: '#d91e48'
+    },
+    {
+      color: '#007fad'
+    },
+    {
+      color: '#e9a227'
     }
+  ],
+  legend: {
+    position: 'bottom',
+    alignment: 'bottom',
+    textStyle: {
+      color: '233238',
+      fontSize: 14
+    }
+  },
+  tooltip: {
+    showColorCode: true
+  },
+  chartArea: {
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: '80%'
+  },
+  fontName: 'Roboto'
+}
+
+class CategoryChart extends Component {
+  state = {
+    chartImageURI: ''
+  }
+  render () {
     return (
       <div>
-        <CanvasJSChart options = {options}
-        /* onRef={ref => this.chart = ref} */
+        <Chart
+          chartType='PieChart'
+          data={[['Category', 'Total'],
+            ['Housing', 1800],
+            ['Shopping', 2],
+            ['Travel&Entertainment', 500],
+            ['Education', 0],
+            ['Bills&Utilities', 500],
+            ['Gifts', 500],
+            ['Healthcare', 200],
+            ['Food&Dining', 800],
+            ['Transport&Auto', 200],
+            ['Kids', 500]]}
+          oprions={pieOptions}
+          graph_id='PieChart'
+          width={'100%'}
+          height={'400px'}
+          legend_toggle
         />
       </div>
     )
   }
 }
 
-export default Chart
+export default CategoryChart

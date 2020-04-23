@@ -4,6 +4,7 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import { ListGroup, Button } from 'react-bootstrap'
 import { icons } from '../../icons/Icons'
+// import CategoryChart from '../Chart/Chart'
 
 class Categories extends Component {
   constructor (props) {
@@ -34,7 +35,7 @@ class Categories extends Component {
       .catch(console.error)
   }
 
-  onSubmit = event => {
+  onCreateTransaction = event => {
     event.preventDefault()
     return <Redirect to='/create-transaction' />
   }
@@ -60,7 +61,7 @@ class Categories extends Component {
         <h4>{categoriesHtml}</h4>
         <Link to={'/create-transaction'}>
           <div>
-            <Button className='new-transaction-button' block>New Transaction</Button>
+            <Button className='new-transaction-button' onSubmit={this.onCreateTransaction.bind(this)} block>New Transaction</Button>
           </div>
         </Link>
       </ListGroup>
