@@ -3,7 +3,7 @@ import { Chart } from 'react-google-charts'
 
 const pieOptions = {
   title: 'Percentage of each category in total expenses',
-  pieHole: 0.6,
+  // pieHole: 0.8,
   slices: [
     {
       color: '#2BB673'
@@ -42,6 +42,7 @@ class CategoryChart extends Component {
   state = {
     chartImageURI: ''
   }
+
   render () {
     return (
       <div>

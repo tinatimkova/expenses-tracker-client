@@ -4,7 +4,7 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import { ListGroup, Button } from 'react-bootstrap'
 import { icons } from '../../icons/Icons'
-// import CategoryChart from '../Chart/Chart'
+import CategoryChart from '../Chart/Chart'
 
 class Categories extends Component {
   constructor (props) {
@@ -64,6 +64,7 @@ class Categories extends Component {
             <Button className='new-transaction-button' onSubmit={this.onCreateTransaction.bind(this)} block>New Transaction</Button>
           </div>
         </Link>
+        <CategoryChart />
       </ListGroup>
     )
   }
