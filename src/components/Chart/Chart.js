@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Chart } from 'react-google-charts'
+import store from '../store'
 
 const pieOptions = {
   title: 'Percentage of each category in total expenses',
-  // pieHole: 0.8,
   slices: [
     {
       color: '#2BB673'
@@ -44,21 +44,27 @@ class CategoryChart extends Component {
   }
 
   render () {
+    const data = [['Category', 'Total'],
+      ['Housing'],
+      ['Shopping'],
+      ['Travel&Entertainment'],
+      ['Education'],
+      ['Bills&Utilities'],
+      ['Gifts'],
+      ['Healthcare'],
+      ['Food&Dining'],
+      ['Transport&Auto'],
+      ['Kids']
+    ]
+    store.categoryTotal.map((total, index) => {
+      index += 1
+      data[index].splice(1, 0, total)
+    })
     return (
       <div>
         <Chart
           chartType='PieChart'
-          data={[['Category', 'Total'],
-            ['Housing', 1800],
-            ['Shopping', 2],
-            ['Travel&Entertainment', 500],
-            ['Education', 0],
-            ['Bills&Utilities', 500],
-            ['Gifts', 500],
-            ['Healthcare', 200],
-            ['Food&Dining', 800],
-            ['Transport&Auto', 200],
-            ['Kids', 500]]}
+          data={data}
           oprions={pieOptions}
           graph_id='PieChart'
           width={'100%'}
