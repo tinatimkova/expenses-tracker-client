@@ -13,10 +13,20 @@ body {
 
 .list-group-item {
   background-color: $background-color;
-  text-align: center;
+  text-align: left;
+  min-width: 40%;
+  &:hover {
+    background-color: $navbar-color;
+  }
 }
 
-.new-transaction-button, .chart {
+.list-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-transaction-button {
   background-color: $navbar-color !important;
   color: $font-color;
   border-color: $font-color;
@@ -25,8 +35,9 @@ body {
 a {
   color: $font-color;
 
-  :hover {
+  &:hover {
     text-decoration: none;
+    color: $font-color;
   }
 }
 
@@ -52,9 +63,10 @@ a {
   transform: translateX(-50%);
 }
 
-h4 {
-  text-align: center;
+.categories {
+  margin: 40px 0 40px 0;
   justify-content: center;
+  min-width: 45%;
 }
 
 h1 {
@@ -69,12 +81,12 @@ span {
   text-decoration: none;
 }
 
-.categories {
-  text-align: left;
-  max-width: 45%;
+.icons {
+  max-width: 22px;
+  margin-right: 15px;
 }
 
-.icons {
-  max-width: 20px;
-  margin-right: 15px;
+.chart-title {
+  margin-top: 40px;
+  text-align: center;
 }

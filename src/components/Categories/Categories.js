@@ -47,11 +47,12 @@ class Categories extends Component {
     if (categories && categoryTotal) {
       if (categories.length && categoryTotal.length) {
         categoriesHtml = categories.map((category, index) => (
-          <ListGroup.Item className='categories' key={category.id}>
+          <ListGroup.Item key={category.id}>
             <Link to={`/categories/${category.id}`}><img className='icons' src={icons[index].icon} />{category.name}<span>{categoryTotal[index]}</span></Link>
           </ListGroup.Item>
         ))
         store.categoryTotal = categoryTotal
+        store.categories = categories
       } else {
         categoriesHtml = 'Loading...'
       }
@@ -59,7 +60,7 @@ class Categories extends Component {
 
     return (
       <ListGroup>
-        <h4>{categoriesHtml}</h4>
+        <h4 className='categories'>{categoriesHtml}</h4>
         <Link to={'/create-transaction'}>
           <div>
             <Button className='new-transaction-button' onSubmit={this.onCreateTransaction.bind(this)} block>New Transaction</Button>

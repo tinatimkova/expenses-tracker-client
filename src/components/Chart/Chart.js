@@ -3,37 +3,56 @@ import { Chart } from 'react-google-charts'
 import store from '../store'
 
 const pieOptions = {
-  title: 'Percentage of each category in total expenses',
+  is3D: true,
   slices: [
     {
-      color: '#2BB673'
+      color: '#003f5c'
     },
     {
-      color: '#d91e48'
+      color: '#2f4b7c'
     },
     {
-      color: '#007fad'
+      color: '#665191'
     },
     {
-      color: '#e9a227'
+      color: '#a05195'
+    },
+    {
+      color: '#d45087'
+    },
+    {
+      color: '#f95d6a'
+    },
+    {
+      color: '#ff7c43'
+    },
+    {
+      color: '#ffa600'
+    },
+    {
+      color: '#a05195'
+    },
+    {
+      color: '#a05195'
     }
   ],
+  backgroundColor: '#ffcba4',
   legend: {
-    position: 'bottom',
-    alignment: 'bottom',
+    position: 'right',
+    alignment: 'center',
     textStyle: {
       color: '233238',
-      fontSize: 14
+      fontSize: 18
     }
   },
   tooltip: {
     showColorCode: true
   },
   chartArea: {
-    left: 0,
-    top: 0,
-    width: '100%',
-    height: '80%'
+    left: 100,
+    top: 20,
+    width: '800px',
+    height: '800px'
   },
   fontName: 'Roboto'
 }
@@ -47,13 +66,13 @@ class CategoryChart extends Component {
     const data = [['Category', 'Total'],
       ['Housing'],
       ['Shopping'],
-      ['Travel&Entertainment'],
+      ['Travel & Entertainment'],
       ['Education'],
-      ['Bills&Utilities'],
+      ['Bills & Utilities'],
       ['Gifts'],
       ['Healthcare'],
-      ['Food&Dining'],
-      ['Transport&Auto'],
+      ['Food & Dining'],
+      ['Transport & Auto'],
       ['Kids']
     ]
     store.categoryTotal.map((total, index) => {
@@ -62,13 +81,14 @@ class CategoryChart extends Component {
     })
     return (
       <div>
+        <h4 className='chart-title'>Percentages By Category</h4>
         <Chart
           chartType='PieChart'
           data={data}
-          oprions={pieOptions}
+          options={pieOptions}
           graph_id='PieChart'
           width={'100%'}
-          height={'400px'}
+          height={'500px'}
           legend_toggle
         />
       </div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Transaction from '../Transaction/Transaction'
 import CategoryTotal from '../CategoryTotal/CategoryTotal'
 import { ListGroup } from 'react-bootstrap'
+import store from '../store'
 
 import axios from 'axios'
 
@@ -35,11 +36,11 @@ class Category extends Component {
     const { category } = this.state
     let categoryHtml
     let total
+    let categoryName
 
     if (category) {
       if (category.length) {
         // Handle we deleted the movies
-
         categoryHtml = category.map(transaction => (
           <ListGroup.Item key={transaction.id}>
             <Transaction
@@ -52,6 +53,8 @@ class Category extends Component {
           </ListGroup.Item>
         ))
         total = <CategoryTotal category={this.state.category} />
+        const currentCategory = store.categories.find(category => category.id === Number(this.props.match.params.id))
+        categoryName = currentCategory.name
       } else {
         return (
           <ListGroup.Item variant="warning">
@@ -69,7 +72,7 @@ class Category extends Component {
 
     return (
       <ListGroup>
-        <h4></h4>
+        <h4>{categoryName}</h4>
         {categoryHtml}
         <Fragment>
           <ListGroup.Item variant="warning">{total}</ListGroup.Item>
