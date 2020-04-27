@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 const TransactionForm = ({ transaction, handleChange, handleSubmit }) => (
 
   <Form className='submit-form' onSubmit={handleSubmit}>
-    <h4>New Transaction</h4>
     <Form.Group>
+      <h4></h4>
       <Form.Label>Date:</Form.Label>
       <Form.Control
         name='date'

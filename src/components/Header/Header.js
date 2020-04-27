@@ -1,13 +1,15 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
 const authenticatedOptions = (
   <Fragment>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
     <Nav.Link href="#categories">All Expenses</Nav.Link>
     <Nav.Link href="#chart">Statistics</Nav.Link>
+    <Nav.Link href="#sign-out"><FontAwesomeIcon icon={ faSignOutAlt } /></Nav.Link>
   </Fragment>
 )
 

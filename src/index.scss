@@ -9,6 +9,7 @@ body {
 
 .navbar {
   background-color: $navbar-color !important;
+  font-size: 18px;
 }
 
 .list-group-item {
@@ -30,6 +31,9 @@ body {
   background-color: $navbar-color !important;
   color: $font-color;
   border-color: $font-color;
+  &:hover {
+    border-color: white;
+  }
 }
 
 a {
@@ -47,6 +51,7 @@ a {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  font-weight: 500;
 }
 
 .submit-form {
@@ -124,4 +129,8 @@ span {
   &:hover {
     background-color: $background-color;
   }
+}
+
+.total {
+  font-weight: bold;
 }

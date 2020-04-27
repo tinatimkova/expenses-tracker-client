@@ -57,8 +57,8 @@ class Category extends Component {
         categoryName = currentCategory.name
       } else {
         return (
-          <ListGroup.Item variant="warning">
-            <h4>{'There\'re no transactions in this category yet!'}</h4>
+          <ListGroup.Item className='single-transaction' variant="warning">
+            <h4 className='total'>{'There\'re no transactions in this category yet!'}</h4>
             <div className='go-back-button'>
               <Link to="/categories">&#8678; Go Back</Link>
             </div>
