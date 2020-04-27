@@ -42,7 +42,7 @@ class Category extends Component {
       if (category.length) {
         // Handle we deleted the movies
         categoryHtml = category.map(transaction => (
-          <ListGroup.Item key={transaction.id}>
+          <ListGroup.Item className='single-transaction' key={transaction.id}>
             <Transaction
               id={transaction.id}
               note={transaction.note}
@@ -72,10 +72,10 @@ class Category extends Component {
 
     return (
       <ListGroup>
-        <h4>{categoryName}</h4>
+        <h4 className='category-name'>{categoryName}</h4>
         {categoryHtml}
         <Fragment>
-          <ListGroup.Item variant="warning">{total}</ListGroup.Item>
+          <ListGroup.Item className='total' variant="warning">{total}</ListGroup.Item>
           <div className='last-month-button'>
             <Link to={`/categories/${this.props.match.params.id}/transactions/last_month`}>
               <button className="btn btn-outline-info btn-sm">Last Month</button>

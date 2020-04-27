@@ -60,7 +60,7 @@ class Categories extends Component {
 
     return (
       <ListGroup>
-        <h4 className='categories'>{categoriesHtml}</h4>
+        <h4>{categoriesHtml}</h4>
         <Link to={'/create-transaction'}>
           <div>
             <Button className='new-transaction-button' onSubmit={this.onCreateTransaction.bind(this)} block>New Transaction</Button>

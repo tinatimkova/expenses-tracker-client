@@ -40,7 +40,7 @@ class LastMonthTransactions extends Component {
       if (category.length) {
         // Handle we deleted the movies
         categoryHtml = category.map(transaction => (
-          <ListGroup.Item key={transaction.id}>
+          <ListGroup.Item className='single-transaction' key={transaction.id}>
             <Transaction
               id={transaction.id}
               note={transaction.note}
@@ -70,7 +70,7 @@ class LastMonthTransactions extends Component {
       <ListGroup>
         <h4>Last month transactions</h4>
         {categoryHtml}
-        <ListGroup.Item variant="warning">{total}</ListGroup.Item>
+        <ListGroup.Item className='total' variant="warning">{total}</ListGroup.Item>
         <div className='go-back-button'>
           <Link to="/categories">&#8678; Go Back</Link>
         </div>

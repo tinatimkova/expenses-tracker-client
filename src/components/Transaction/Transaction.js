@@ -1,6 +1,8 @@
 import React, { useState, Fragment } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoneyBillWave, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
 import apiUrl from '../../apiConfig'
 
@@ -37,9 +39,9 @@ const Transaction = props => {
   }
   return (
     <Fragment>
-      <h4>{props.note}</h4>
-      <p>Amount: {props.amount}</p>
-      <p>Date: {props.date}</p>
+      <h5>{props.note}</h5>
+      <p><FontAwesomeIcon className='icons' icon={faMoneyBillWave} />{props.amountIcon}{props.amount}</p>
+      <p><FontAwesomeIcon className='icons' icon={faCalendarAlt} />{props.date}</p>
       <button className='btn btn-outline-danger btn-sm' onClick={destroy}>Delete</button>
       <Link to={`/transactions/${props.id}/edit`}>
         <button className="btn btn-outline-info btn-sm">Edit</button>

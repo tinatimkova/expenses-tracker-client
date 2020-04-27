@@ -7,7 +7,7 @@ const CategoryTotal = props => {
   })
 
   return (
-    <h5>Total: {total}</h5>
+    <h5 className='total'>Total: {total}</h5>
   )
 }
 
