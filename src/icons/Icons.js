@@ -14,10 +14,16 @@ export const icons = [
     icon: housing
   },
   {
+    icon: utensils
+  },
+  {
     icon: shopping
   },
   {
     icon: travel
+  },
+  {
+    icon: auto
   },
   {
     icon: education
@@ -30,12 +36,6 @@ export const icons = [
   },
   {
     icon: health
-  },
-  {
-    icon: utensils
-  },
-  {
-    icon: auto
   },
   {
     icon: kids
