@@ -68,7 +68,7 @@ class LastMonthTransactions extends Component {
 
     return (
       <ListGroup>
-        <h4 className='category-name'>Last month</h4>
+        <h4 className='category-name'>This month</h4>
         {categoryHtml}
         <ListGroup.Item className='total' variant="warning">{total}</ListGroup.Item>
         <div className='go-back-button'>

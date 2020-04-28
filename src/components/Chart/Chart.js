@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Chart } from 'react-google-charts'
 import store from '../store'
+import RecommendedBudget from '../RecommendedBudget/RecommendedBudget'
 
 const pieOptions = {
   is3D: true,
@@ -36,7 +37,10 @@ const pieOptions = {
       color: '#a05195'
     }
   ],
-  backgroundColor: '#ffcba4',
+  backgroundColor: {
+    stroke: '#4322c0',
+    strokeWidth: 4
+  },
   legend: {
     position: 'right',
     alignment: 'center',
@@ -49,10 +53,10 @@ const pieOptions = {
     showColorCode: true
   },
   chartArea: {
-    left: 100,
-    top: 20,
-    width: '800px',
-    height: '800px'
+    left: 80,
+    top: 60,
+    width: '700px',
+    height: '600px'
   },
   fontName: 'Roboto'
 }
@@ -80,17 +84,21 @@ class CategoryChart extends Component {
       data[index].splice(1, 0, total)
     })
     return (
-      <div>
-        <h4 className='chart-title'>Percentages By Category</h4>
+      <div className='chart'>
+        <h4 className='chart-title'>Budget Percentages By Category</h4>
         <Chart
           chartType='PieChart'
+          loader={<div>Loading Chart</div>}
           data={data}
           options={pieOptions}
           graph_id='PieChart'
-          width={'100%'}
-          height={'500px'}
+          width={'700px'}
+          height={'400px'}
           legend_toggle
         />
+        <div>
+          <RecommendedBudget total={data} />
+        </div>
       </div>
     )
   }

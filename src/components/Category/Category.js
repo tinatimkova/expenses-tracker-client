@@ -78,7 +78,7 @@ class Category extends Component {
           <ListGroup.Item className='total' variant="warning">{total}</ListGroup.Item>
           <div className='last-month-button'>
             <Link to={`/categories/${this.props.match.params.id}/transactions/last_month`}>
-              <button className="btn btn-outline-info btn-sm">Last Month</button>
+              <button className="btn btn-outline-info btn-sm">This Month</button>
             </Link>
           </div>
         </Fragment>
