@@ -12,14 +12,14 @@ class RecommendedBudget extends Component {
     })
     const totalExpenses = total.toFixed(2)
     const recommendedExpenses = [[], ['Housing', totalExpenses * 0.35],
+      ['Food & Dining', totalExpenses * 0.15],
       ['Shopping', totalExpenses * 0.05],
       ['Travel & Entertainment', totalExpenses * 0.05],
+      ['Transport & Auto', totalExpenses * 0.1],
       ['Education', totalExpenses * 0.05],
       ['Bills & Utilities', totalExpenses * 0.05],
       ['Gifts', totalExpenses * 0.05],
       ['Healthcare', totalExpenses * 0.1],
-      ['Food & Dining', totalExpenses * 0.15],
-      ['Transport & Auto', totalExpenses * 0.1],
       ['Kids', totalExpenses * 0.05]]
     data.map((category, index) => {
       if (index === 0) {

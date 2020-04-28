@@ -69,14 +69,14 @@ class CategoryChart extends Component {
   render () {
     const data = [['Category', 'Total'],
       ['Housing'],
+      ['Food & Dining'],
       ['Shopping'],
       ['Travel & Entertainment'],
+      ['Transport & Auto'],
       ['Education'],
       ['Bills & Utilities'],
       ['Gifts'],
       ['Healthcare'],
-      ['Food & Dining'],
-      ['Transport & Auto'],
       ['Kids']
     ]
     store.categoryTotal.map((total, index) => {
